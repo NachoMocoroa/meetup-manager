@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { ALL_MEETUP_PAGE, FAVORITES_PAGE, NEW_MEETUP_PAGE } from "./../../utils/constants";
+import { Link } from "react-router-dom";
+import { ALL_MEETUP_PAGE, NEW_MEETUP_PAGE, FAVORITES_PAGE } from "./../../utils/constants";
 
 import classes from "./MainNavigation.module.css";
 
-export default function MainNavigation({ setPage }) {
+export default function MainNavigation() {
 
   const headerHeigh = 100;
   const [position, setPosition] = useState(window.pageYOffset);
@@ -45,21 +46,16 @@ export default function MainNavigation({ setPage }) {
       <nav>
         <ul>
           <li>
-            <a href="#" onClick={() => setPage(ALL_MEETUP_PAGE)}>
-              All Meetups
-            </a>
-          </li>
-
-          <li>
-            <a href="#" onClick={() => setPage(NEW_MEETUP_PAGE)}>
-              Add New Meetup
-            </a>
+            <Link to={ALL_MEETUP_PAGE.path}>{ALL_MEETUP_PAGE.text}</Link>
           </li>
           <li>
-            <a href="#" onClick={() => setPage(FAVORITES_PAGE)}>
-              My Favorites
+            <Link to={NEW_MEETUP_PAGE.path}>{NEW_MEETUP_PAGE.text}</Link>
+          </li>
+          <li>
+            <Link to={FAVORITES_PAGE.path}>
+              {FAVORITES_PAGE.text}
               <span className={classes.badge}>{0}</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
