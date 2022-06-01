@@ -23,9 +23,10 @@ const reducer = (state = initalState, action) => {
             };
         case MEETUP.SAVE_MEETUP: {
             const { content } = action.payload;
+            content.id = `m${state.meetupData.length + 1}`;
             return {
                 ...state,
-                meetupFavorite: [...state.meetupFavorite, content],
+                meetupData: [...state.meetupData, content],
             };
         }
         case MEETUP.GET_FAVORITE:

@@ -21,6 +21,13 @@ export const requestMeetup = (data) => async (dispatch) => {
     }
 };
 
+export const saveMeetup = content => ({
+    type: MEETUP.SAVE_MEETUP,
+    payload: {
+        content
+    }
+});
+
 export const addFavorite = content => ({
     type: MEETUP.ADD_FAVORITE,
     payload: {
