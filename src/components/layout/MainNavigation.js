@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { ALL_MEETUP_PAGE, NEW_MEETUP_PAGE, FAVORITES_PAGE } from "./../../utils/constants";
 
 import classes from "./MainNavigation.module.css";
@@ -12,6 +13,7 @@ export default function MainNavigation() {
   const [showTopBtn, setShowTopBtn] = useState(false);
   const headerVisibleClasses = headerVisible ? classes.visible : classes.hidden;
   const topBtnVisibleClass = showTopBtn ? classes.top_button_visible : '';
+  const { meetupFavorite } = useSelector((state) => state);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -54,7 +56,7 @@ export default function MainNavigation() {
           <li>
             <Link to={FAVORITES_PAGE.path}>
               {FAVORITES_PAGE.text}
-              <span className={classes.badge}>{0}</span>
+              <span className={classes.badge}>{meetupFavorite.length}</span>
             </Link>
           </li>
         </ul>

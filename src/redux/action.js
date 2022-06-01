@@ -20,3 +20,17 @@ export const requestMeetup = (data) => async (dispatch) => {
         });
     }
 };
+
+export const addFavorite = content => ({
+    type: MEETUP.ADD_FAVORITE,
+    payload: {
+        content
+    }
+});
+
+export const removeFavorite = content => ({
+    type: MEETUP.REMOVE_FAVORITE,
+    payload: {
+        content
+    }
+});

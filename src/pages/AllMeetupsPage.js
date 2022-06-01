@@ -1,31 +1,38 @@
-import { useFetch } from "./../util-hooks/useFetch";
+import { useSelector, useDispatch } from "react-redux";
+import { addFavorite } from "../redux/action";
 import MeetupItem from "../components/meetups/MeetupItem";
 import classes from "./../components/meetups/MeetupList.module.css";
 
 export default function AllMeetupsPage() {
 
-  const { data } = useFetch({
-    url: "/data.json",
-  });
-  console.log('data: ', data);
+  const { meetupData, meetupFavorite } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
-  const addMeetup = (data) => {
-    console.log('addMeetup - data: ', data);
+  const addFavoriteMeetup = (data) => {
+    dispatch(addFavorite(data));
+  };
+
+  const isFavoriteYet = (item) => {
+    const isFavorite = meetupFavorite.findIndex(({ id }) => id === item.id);
+    const disable = isFavorite === -1 ? false : true;
+    return disable;
   };
 
   return (
     <section>
       <h1>All Meetups</h1>
-      {!data ? (
+      {!meetupData ? (
         <p>Loading...</p>
       ) : (
         <ul className={classes.list}>
-          {data.map((item, index) => (
+          {meetupData.map((item, index) => (
             <MeetupItem 
               key={`meet-${index}`}
               item={item} 
+              action="add"
+              disabled={isFavoriteYet(item)}
               handleClick={() =>
-                addMeetup(item)
+                addFavoriteMeetup(item)
               }
             />
           ))}
