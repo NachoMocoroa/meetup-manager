@@ -4,6 +4,7 @@ import { useForm } from '../../util-hooks/useForm';
 import Card from "../ui/Card";
 import FormInput from "./FormInput";
 import classes from "./NewMeetupForm.module.css";
+import { TEXTS } from "./../../utils/constants";
 
 export default function NewMeetupForm() {
   
@@ -32,7 +33,7 @@ export default function NewMeetupForm() {
         <FormInput 
           type="text"  
           isRequired={true} 
-          labelText="Meetup Title" 
+          labelText={TEXTS.FORM_LABELS.TITLE.text} 
           inputClass={classes.control} 
           attribute="title" 
           value={ title } 
@@ -41,7 +42,7 @@ export default function NewMeetupForm() {
         <FormInput 
           type="url"  
           isRequired={true} 
-          labelText="Meetup Image" 
+          labelText={TEXTS.FORM_LABELS.IMAGE.text} 
           inputClass={classes.control} 
           attribute="image" 
           value={ image } 
@@ -50,7 +51,7 @@ export default function NewMeetupForm() {
         <FormInput 
           type="text"  
           isRequired={true} 
-          labelText="Address" 
+          labelText={TEXTS.FORM_LABELS.ADDRESS.text} 
           inputClass={classes.control} 
           attribute="address" 
           value={ address } 
@@ -59,14 +60,14 @@ export default function NewMeetupForm() {
         <FormInput 
           element="textarea"  
           isRequired={true} 
-          labelText="Description" 
+          labelText={TEXTS.FORM_LABELS.DESCRIPTION.text} 
           inputClass={classes.control} 
           attribute="description" 
           value={ description } 
           handleInputChange={ handleInputChange } 
         />
         <div className={classes.actions}>
-          <button>Add Meetup</button>
+          <button>{TEXTS.FORM_LABELS.ADD_BUTTON.text}</button>
         </div>
       </form>
     </Card>

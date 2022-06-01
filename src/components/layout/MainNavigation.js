@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { ALL_MEETUP_PAGE, NEW_MEETUP_PAGE, FAVORITES_PAGE } from "./../../utils/constants";
-
 import classes from "./MainNavigation.module.css";
+import { NAVIGATION, TEXTS } from "./../../utils/constants";
 
 export default function MainNavigation() {
 
+  const linkActiveClassName = classes.link_active;
   const headerHeigh = 100;
   const [position, setPosition] = useState(window.pageYOffset);
   const [headerVisible, setHeaderVisible] = useState(true);
   const [showTopBtn, setShowTopBtn] = useState(false);
+  const [burgerClicked, setBurgerClicked] = useState(false);
   const headerVisibleClasses = headerVisible ? classes.visible : classes.hidden;
   const topBtnVisibleClass = showTopBtn ? classes.top_button_visible : '';
+  const classBurgerClicked = burgerClicked ? classes.change : '';
   const { meetupFavorite } = useSelector((state) => state);
 
   const scrollToTop = () => {
@@ -20,6 +22,10 @@ export default function MainNavigation() {
       top: 0, 
       behavior: 'smooth'
     });
+  };
+
+  const toggleMenu = () => {
+    setBurgerClicked(!burgerClicked);
   };
 
   useEffect(()=> {
@@ -44,20 +50,27 @@ export default function MainNavigation() {
         onClick={() => scrollToTop()} 
         className={`${classes.top_button} ${topBtnVisibleClass}`}
       ></button> 
-      <div className={classes.logo}>React Meetups</div>
-      <nav>
+      <div className={classes.header_items}>
+        <div className={classes.logo}>{TEXTS.LOGO.text}</div>
+        <div className={`${classes.burger_btn} ${classBurgerClicked}`} onClick={() => toggleMenu()}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <nav className={`${classBurgerClicked ? '' : classes.hidden}`}>
         <ul>
           <li>
-            <Link to={ALL_MEETUP_PAGE.path}>{ALL_MEETUP_PAGE.text}</Link>
+            <NavLink to={NAVIGATION.ALL_MEETUP_PAGE.path} className={({ isActive }) => isActive ? linkActiveClassName : undefined}>{NAVIGATION.ALL_MEETUP_PAGE.text}</NavLink>
           </li>
           <li>
-            <Link to={NEW_MEETUP_PAGE.path}>{NEW_MEETUP_PAGE.text}</Link>
+            <NavLink to={NAVIGATION.NEW_MEETUP_PAGE.path} className={({ isActive }) => isActive ? linkActiveClassName : undefined}>{NAVIGATION.NEW_MEETUP_PAGE.text}</NavLink>
           </li>
           <li>
-            <Link to={FAVORITES_PAGE.path}>
-              {FAVORITES_PAGE.text}
+            <NavLink to={NAVIGATION.FAVORITES_PAGE.path} className={({ isActive }) => isActive ? linkActiveClassName : undefined}>
+              {NAVIGATION.FAVORITES_PAGE.text}
               <span className={classes.badge}>{meetupFavorite.length}</span>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>

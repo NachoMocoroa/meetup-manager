@@ -1,10 +1,11 @@
 import classes from "./MeetupItem.module.css";
 import Card from "../ui/Card";
+import { TEXTS } from "../../utils/constants";
 
 export default function MeetupItem({ item, action, disabled, handleClick }) {
 
-  const addFavoriteText = "Add to favorites";
-  const removeFavoriteText = "Remove from favorites";
+  const addFavoriteText = TEXTS.ADD_TO_FAVORITES.text;
+  const removeFavoriteText = TEXTS.REMOVE_FROM_FAVORITES.text;
 
   return (
     <li className={classes.item} data-test='meet-up-item'>

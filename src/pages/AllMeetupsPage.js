@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addFavorite } from "../redux/action";
 import MeetupItem from "../components/meetups/MeetupItem";
 import classes from "./../components/meetups/MeetupList.module.css";
+import { NAVIGATION } from "../utils/constants";
 
 export default function AllMeetupsPage() {
 
@@ -20,7 +21,7 @@ export default function AllMeetupsPage() {
 
   return (
     <section>
-      <h1>All Meetups</h1>
+      <h1>{NAVIGATION.ALL_MEETUP_PAGE.text}</h1>
       {!meetupData ? (
         <p>Loading...</p>
       ) : (

@@ -14,7 +14,7 @@ import NewMeetupsPage from "./pages/NewMeetup";
 import MainNavigation from "./components/layout/MainNavigation";
 import Layout from "./components/layout/Layout";
 
-import { ALL_MEETUP_PAGE, NEW_MEETUP_PAGE, FAVORITES_PAGE } from "./utils/constants";
+import { NAVIGATION, TEXTS } from "./utils/constants";
 
 function App() {
   const pathJSON = "/data.json";
@@ -31,14 +31,14 @@ function App() {
 
   return (
     <Router>
-      {isLoading && <div>Data loading...</div>}
+      {isLoading && <div>{TEXTS.LOADING.text}</div>}
       {meetupData.length > 0 && <div className="wrapper" data-test="app">
         <MainNavigation />
         <Layout>
           <Routes>
-            <Route path={ALL_MEETUP_PAGE.path} element={<AllMeetupsPage />} />
-            <Route path={NEW_MEETUP_PAGE.path} element={<NewMeetupsPage />} />
-            <Route path={FAVORITES_PAGE.path} element={<FavoritesPage />} />
+            <Route path={NAVIGATION.ALL_MEETUP_PAGE.path} element={<AllMeetupsPage />} />
+            <Route path={NAVIGATION.NEW_MEETUP_PAGE.path} element={<NewMeetupsPage />} />
+            <Route path={NAVIGATION.FAVORITES_PAGE.path} element={<FavoritesPage />} />
           </Routes>
         </Layout>
       </div>}

@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFavorite } from "../redux/action";
 import MeetupItem from "../components/meetups/MeetupItem";
 import classes from "./../components/meetups/MeetupList.module.css";
+import { NAVIGATION, TEXTS } from "../utils/constants";
 
 export default function FavoritesPage() {
 
@@ -14,9 +15,9 @@ export default function FavoritesPage() {
 
   return (
     <section>
-      <h1>Favorites Page</h1>
+      <h1>{NAVIGATION.FAVORITES_PAGE.text}</h1>
       {meetupFavorite.length === 0 ? (
-        <p>NO FAVORITES YET</p>
+        <p>{TEXTS.NO_FAVORITES_YET.text}</p>
       ) : (
         <ul className={classes.list}>
           {meetupFavorite.map((item, index) => (

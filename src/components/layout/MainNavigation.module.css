@@ -15,36 +15,110 @@
   font-weight: bold;
 }
 
+.header_items {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+  
+.header nav {
+  background-color: #77002e;
+  width: 270px;
+  height: calc(100vh - 80px);
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(80px);
+  transition: all 0.75s ease;
+}
+
+.header .hidden {
+  right: -270px;
+}
+
 .header ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 10px 0 0 0;
+  align-items: flex-end;
+  padding: 0 20px;
 }
   
 .header li {
-  margin-left: 3rem;
+  margin: 10px 0;
+}
+  
+.header li:first-of-type {
+  margin: 0 0 10px 0;
+}
+  
+.header li:last-of-type {
+  margin: 10px 0 0 0;
 }
 
 .header a {
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1;
   color: #fcb8d2;
 }
 
 .header a:hover,
 .header a:active,
-.header a.active {
+.header a.active,
+.header a.link-active {
   color: white;
+}
+
+.link_active {
+  color: white !important;
+}
+
+.burger_btn {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.burger_btn span {
+  width: 35px;
+  height: 5px;
+  background-color: #FFFFFF;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+
+.change span {
+  position: relative;
+}
+
+.change span:nth-child(1) {
+  -webkit-transform: rotate(-45deg) translate(-9px, 9px) ;
+  transform: rotate(-45deg) translate(-9px, 9px) ;
+}
+
+.change span:nth-child(2) {
+  opacity: 0;
+}
+
+.change span:nth-child(3) {
+  -webkit-transform: rotate(45deg) translate(-7px, -7px) ;
+  transform: rotate(45deg) translate(-7px, -7px) ;
 }
   
 .badge {
   background-color: #cc2062;
   color: white;
-  border-radius: 12px;
-  padding: 0 1rem;
   margin-left: 0.5rem;
+  border-radius: 50%;
+  padding: 1px 7px;
+  font-size: 0.85rem;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
 }
 
 .visible {
@@ -74,12 +148,14 @@
   visibility: hidden;
   opacity: 0;
   transition: opacity .3s, visibility .3s, background-color .3s;
-  cursor: pointer;
+  cursor: default;
 }
 
 .top_button_visible {
   visibility: visible;
   opacity: 1;
+  z-index: 1;
+  cursor: pointer;
 }
 
 .top_button::before {
@@ -92,4 +168,50 @@
   border-style: solid;
   border-width: 0.2em 0.2em 0 0;
   border-color: white;
+}
+
+@media only screen and (min-width: 960px) {
+
+  .header_items {
+    width: 50%;
+  }
+
+  .header nav {
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    position: unset;
+    transform: unset;
+    transition: unset;
+    right: unset !important;
+  }
+
+  .header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+  }
+  
+  .header li {
+    margin: 0 0 0 2rem;
+  }
+    
+  .header li:first-of-type {
+    margin: 0;
+  }
+    
+  .header li:last-of-type {
+    margin: 0 0 0 2rem;
+  }
+
+  .header a {
+    font-size: 1.25rem;
+  }
+
+  .burger_btn {
+    display: none;
+  }
 }

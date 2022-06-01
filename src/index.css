@@ -4,10 +4,12 @@
 
 * {
   box-sizing: border-box;
+  border: none;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
   margin: 0;
   background-color: #fcf3f6;
 }
