@@ -13,7 +13,7 @@ export default function MainNavigation() {
   const headerVisibleClasses = headerVisible ? classes.visible : classes.hidden;
   const topBtnVisibleClass = showTopBtn ? classes.top_button_visible : '';
 
-  const scrollToTop = () =>{
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0, 
       behavior: 'smooth'
