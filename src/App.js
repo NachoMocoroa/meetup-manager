@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route 
 } from "react-router-dom";
 
 import { requestMeetup } from "./redux/action";

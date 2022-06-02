@@ -7,7 +7,7 @@ import { NAVIGATION, TEXTS } from "./../../utils/constants";
 export default function MainNavigation() {
 
   const linkActiveClassName = classes.link_active;
-  const headerHeigh = 100;
+  const headerHeigh = 150;
   const [position, setPosition] = useState(window.pageYOffset);
   const [headerVisible, setHeaderVisible] = useState(true);
   const [showTopBtn, setShowTopBtn] = useState(false);

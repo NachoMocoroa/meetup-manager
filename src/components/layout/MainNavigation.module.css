@@ -7,6 +7,7 @@
   justify-content: space-between;
   background-color: #77002e;
   padding: 0 10%;
+  z-index: 1;
 }
 
 .logo {
@@ -114,11 +115,14 @@
   color: white;
   margin-left: 0.5rem;
   border-radius: 50%;
-  padding: 1px 7px;
+  padding: 0;
   font-size: 0.85rem;
-  width: 20px;
-  height: 20px;
-  line-height: 1;
+  width: 23px;
+  height: 23px;
+  line-height: 1.2;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .visible {
@@ -184,6 +188,7 @@
     transform: unset;
     transition: unset;
     right: unset !important;
+    padding-top: 12px;
   }
 
   .header ul {
